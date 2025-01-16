@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book_social_network
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: localhost
+    port: 1025
+    username: ali
+    password: ali
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/book-social-network"
+application:
+  security:
+    jwt:
+      secret-key: 7ff9fab48f82cd148e7e7e8c8e2663d73aaf472a7add0fc500ab126d0a783ac38c55a69949ed4666861ea7511c20e2619b2f54c19fe625dcb9c6265a9989ca4b0f0bc888dbbeb2d32638364476489d747bb6123f77991d25591618ac4d91b7dde94b1ad613a40719b8114b3d81ad67b83703b81bb313f41e8ae382cd9d20f313be545f77ec364c405ae8d1b9879f2d935e9f7d7861b4dee101a7a5064c029b75522f74b134f280ebcd18ee821d4a0bc193e1b9510e1a43037dc5c4fa4008197df6f89a18432dc7e88008cd8c84c9381b9e637fb9191a682fd2f32cc814be198c788db2ad4fabae6c6c4ac27ad79cd93dcf8e20df5ddefe1ba16f004b4ce6f982
+      expiration: 8640000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+  file:
+    uploads:
+      photos-output-path: ./uploads
+server:
+  port: 8088
